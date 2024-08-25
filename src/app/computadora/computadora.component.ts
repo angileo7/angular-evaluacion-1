@@ -10,7 +10,8 @@ import { Computadora } from '../models/computadora';
   styleUrl: './computadora.component.css'
 })
 export class ComputadoraComponent {
-  @Input() computadora: Computadora;
+  @Input()
+  computadora!: Computadora;
   @HostBinding('attr.class') cssClass = 'col-md-4';
 
   constructor(){

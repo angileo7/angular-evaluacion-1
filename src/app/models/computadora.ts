@@ -1,8 +1,8 @@
 export class Computadora {
     nombre:string;
-    ram:number;
+    ram:string;
 
-    constructor(a:string, b:number){
+    constructor(a:string, b:string){
         this.nombre = a;
         this.ram = b;
     }

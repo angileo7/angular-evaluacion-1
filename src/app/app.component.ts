@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ListadoComputadoraComponent } from './listado-computadora/listado-computadora.component';
+import { map, Observable, shareReplay, timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,8 @@ import { ListadoComputadoraComponent } from './listado-computadora/listado-compu
 })
 export class AppComponent {
   title = 'angular-evaluacion-1';
+  
+  time = new Observable( observer => {
+    setInterval(() => observer.next(new Date().toString()), 1000);
+  });
 }

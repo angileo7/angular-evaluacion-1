@@ -1,15 +1,30 @@
 <li class="col-md-4">
     <div class="card-content">
-        <div class="card-img">
+        <div class="card-header">
+            <span><h4>{{position}}</h4></span>
+        </div>
+        <div class="card-desc details-card">
             <span>
                 <h4>{{computadora.nombre}}</h4>
             </span>
+            <p>servicios</p>
+            <ul>
+                <li *ngFor="let s of computadora.servicios">
+                    <span [ngSwitch]="s">
+                        <i *ngSwitchCase="'dos'" style="color: blueviolet;">{{s}}</i>
+                        <i *ngSwitchDefault>{{s}}</i>
+                    </span>
+                </li>
+            </ul>
         </div>
         <div class="card-desc">
             <h3>RAM</h3>
             <span>
                 <h4>{{computadora.ram}}</h4>
             </span>
+            <a href="#" class="btn-card" (click)="ir()">Ir!</a>
+            <span *ngIf="computadora.isSelected()">PREFERIDO</span>
+            <span ngNonBindable>{{non bindablen syntax}}</span>
         </div>
     </div>
 </li>

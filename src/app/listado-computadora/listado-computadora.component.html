@@ -1,5 +1,4 @@
 <div class="container content">
-    <div class="row">
         <div class="col-md-6 offset-md-3">
             <span class="anchor" id="formLogin"></span>
             <div class="card card-outline-secondary">
@@ -7,24 +6,24 @@
                     <h3 class="mb-0">listado</h3>
                 </div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Ingresar	
-nombre..." #nombre>
-                        </div>
-                        <div class="form-group">
-                            <label for="Imagen	Url">RAM</label>
-                            <input type="text" class="form-control" id="ram" placeholder="Ingresar ram..." #ram>
-                        </div>
-                        <button type="submit" class="btn btn-primary" (click)="guardar(nombre.value,ram.value)">Guardar</button>
-                    </form>
+                    <app-form-computadora (onItemAdded)="agregado($event)"></app-form-computadora>
                 </div>
             </div>
         </div>
-    </div>
     <hr class="mb-5">
     <ul class="row">
-        <app-computadora *ngFor="let c of computadoras" [computadora]="c"></app-computadora>
+        <app-computadora *ngFor="let c of computadoraApiClient.getAll() let i=index" 
+        [computadora]="c"
+        [position]="i+1"
+        [idx]="i+1"
+        (clicked)="elegir($event)"
+        ></app-computadora>
     </ul>
+    <hr class="mb-5">
+    <div class="row row-flex">
+        <h5>Actividades</h5>
+        <ul>
+            <li *ngFor="let u of updates;">{{u}}</li>
+        </ul>
+    </div>
 </div>

@@ -1,0 +1,40 @@
+<div class="card-content" [@esFavorito]="isSelected() ? 'estadoFavorito' : 'estadoNoFavorito'">
+    <div class="card-img">
+        <img src="https://assets.traveltriangle.com/blog/wp-content/uploads/2018/09/swiss-alps.jpg?tr=w-400" width="380" height="230"	alt="">
+        <span><h4>{{ position }}</h4></span>
+    </div>
+    <div class="card-desc">
+        <h3>{{ destino.nombre }}</h3>
+        <p>Servicios</p>
+        <ul>
+            <li *ngFor="let s of destino.servicios">
+                <span [ngSwitch]="s">
+                    <i *ngSwitchCase="'desayuno'" style="color: red;">{{ s }}</i>
+                    <i *ngSwitchDefault>{{ s }}</i>
+                </span>
+                
+            </li>
+        </ul>
+        <div class="mb-3">
+            <a (click)="voteUp()" appTrackearClick data-trackear-tags="destino_vote_up lista_destinos_item">
+                <i class="material-icons md-18">thumb_up</i>
+            </a>
+            &nbsp;
+            <a (click)="voteDown()" appTrackearClick data-trackear-tags="destino_vote_down lista_destinos_item">
+                <i class="material-icons md-18">thumb_down</i>
+            </a>
+            &nbsp;
+            Votos: {{destino.votes}}
+        </div>
+        <div>
+            <a class="btn-card" (click) = "ir()" appTrackearClick data-trackear-tags="destino_elegir_preferido lista_destinos_item">Ir!</a>
+            <span *ngIf="isSelected()">
+                <span ngNonBindable>{{PREFERIDO}}</span>
+            </span>
+            <p class="mt-3">
+                <a [routerLink]="['/destino', destino.id]">Ver Detalle</a>
+            </p>
+            
+        </div>		
+    </div>
+</div>
